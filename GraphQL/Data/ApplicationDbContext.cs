@@ -8,5 +8,5 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    public DbSet<Speaker> Speakers { get; set; }
+    public DbSet<Speaker> Speakers { get; set; } = default!;
 }

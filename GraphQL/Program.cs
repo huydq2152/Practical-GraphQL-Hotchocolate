@@ -1,23 +1,30 @@
 using GraphQL.Data;
-using GraphQL.GraphQL.Speaker;
+using GraphQL.GraphQL.DataLoader;
+using GraphQL.GraphQL.Mutations;
+using GraphQL.GraphQL.Queries;
+using GraphQL.GraphQL.Types;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services
     .AddGraphQLServer()
+    .RegisterDbContext<ApplicationDbContext>(DbContextKind.Pooled)
     .AddQueryType<SpeakerQuery>()
-    .AddMutationType<SpeakerMutation>();
+    .AddMutationType<SpeakerMutation>()
+    .AddType<SpeakerType>()
+    .AddDataLoader<SpeakerByIdDataLoader>()
+    .AddDataLoader<SessionByIdDataLoader>();
 
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
-{ 
+{
     app.UseDeveloperExceptionPage();
 }
 

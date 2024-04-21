@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GraphQL.Data;
+namespace GraphQL.Data.Entities;
 
 public class Speaker
 {
@@ -15,4 +15,7 @@ public class Speaker
 
     [StringLength(1000)]
     public virtual string? WebSite { get; set; }
+    
+    public ICollection<SessionSpeaker> SessionSpeakers { get; set; } = 
+        new List<SessionSpeaker>();
 }

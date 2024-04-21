@@ -1,0 +1,19 @@
+﻿using GraphQL.Data.Entities;
+using GraphQL.GraphQL.Common;
+
+namespace GraphQL.GraphQL.Model.Speakers;
+
+public class SpeakerPayloadBase: Payload
+{
+    protected SpeakerPayloadBase(Speaker speaker)
+    {
+        Speaker = speaker;
+    }
+
+    protected SpeakerPayloadBase(IReadOnlyList<UserError> errors)
+        : base(errors)
+    {
+    }
+
+    public Speaker? Speaker { get; }
+}

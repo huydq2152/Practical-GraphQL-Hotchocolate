@@ -3,6 +3,7 @@ using GraphQL.GraphQL.Model.Speakers;
 
 namespace GraphQL.GraphQL.Mutations;
 
+[ExtendObjectType("Mutation")]
 public class SpeakerMutation
 {
     public async Task<AddSpeakerPayload> AddSpeakerAsync(

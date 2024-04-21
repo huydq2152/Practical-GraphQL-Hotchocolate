@@ -16,8 +16,13 @@ builder.Services
     .AddGraphQLServer()
     .RegisterDbContext<ApplicationDbContext>(DbContextKind.Pooled)
     .AddQueryType<SpeakerQuery>()
-    .AddMutationType<SpeakerMutation>()
+    
+    .AddMutationType(d=> d.Name("Mutation"))
+    .AddTypeExtension<SpeakerMutation>()
+    
     .AddType<SpeakerType>()
+    .AddGlobalObjectIdentification()
+    .AddQueryFieldToMutationPayloads()
     .AddDataLoader<SpeakerByIdDataLoader>()
     .AddDataLoader<SessionByIdDataLoader>();
 

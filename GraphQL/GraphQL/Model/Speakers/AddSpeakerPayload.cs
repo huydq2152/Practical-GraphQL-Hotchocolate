@@ -1,11 +1,15 @@
-﻿namespace GraphQL.GraphQL.Model.Speakers;
+﻿using GraphQL.GraphQL.Common;
 
-public class AddSpeakerPayload
+namespace GraphQL.GraphQL.Model.Speakers;
+
+public class AddSpeakerPayload : SpeakerPayloadBase
 {
-    public AddSpeakerPayload(Data.Entities.Speaker speaker)
+    public AddSpeakerPayload(Data.Entities.Speaker speaker) : base(speaker)
     {
-        Speaker = speaker;
     }
 
-    public Data.Entities.Speaker Speaker { get; }
+    public AddSpeakerPayload(IReadOnlyList<UserError> errors)
+        : base(errors)
+    {
+    }
 }

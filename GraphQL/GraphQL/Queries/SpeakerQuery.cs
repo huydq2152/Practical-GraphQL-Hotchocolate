@@ -10,7 +10,7 @@ public class SpeakerQuery
     public Task<List<Speaker>> GetSpeakers(ApplicationDbContext context) =>
         context.Speakers.ToListAsync();
     public Task<Speaker> GetSpeakerAsync(
-        int id,
+        [ID(nameof(Speaker))] int id,
         SpeakerByIdDataLoader dataLoader,
         CancellationToken cancellationToken) =>
         dataLoader.LoadAsync(id, cancellationToken);

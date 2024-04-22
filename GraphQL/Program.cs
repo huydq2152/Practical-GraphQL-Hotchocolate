@@ -20,11 +20,13 @@ builder.Services
     .AddTypeExtension<SpeakerQueries>()
     .AddTypeExtension<SessionQueries>()
     .AddTypeExtension<TrackQueries>()
+    .AddTypeExtension<AttendeeQueries>()
     
     .AddMutationType(d=> d.Name("Mutation"))
     .AddTypeExtension<SpeakerMutations>()
     .AddTypeExtension<SessionMutations>()
     .AddTypeExtension<TrackMutations>()
+    .AddTypeExtension<AttendeeMutations>()
 
     .AddType<AttendeeType>()
     .AddType<SessionType>()

@@ -1,6 +1,6 @@
 ﻿using GraphQL.GraphQL.Common;
 
-namespace GraphQL.GraphQL.Model.Speakers;
+namespace GraphQL.GraphQL.Model.Speakers.Add;
 
 public class AddSpeakerPayload : SpeakerPayloadBase
 {

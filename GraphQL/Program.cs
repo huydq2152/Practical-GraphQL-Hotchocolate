@@ -17,10 +17,14 @@ builder.Services
     .RegisterDbContext<ApplicationDbContext>(DbContextKind.Pooled)
     
     .AddQueryType(d=> d.Name("Query"))
-    .AddTypeExtension<SpeakerQuery>()
+    .AddTypeExtension<SpeakerQueries>()
+    .AddTypeExtension<SessionQueries>()
+    .AddTypeExtension<TrackQueries>()
     
     .AddMutationType(d=> d.Name("Mutation"))
-    .AddTypeExtension<SpeakerMutation>()
+    .AddTypeExtension<SpeakerMutations>()
+    .AddTypeExtension<SessionMutations>()
+    .AddTypeExtension<TrackMutations>()
 
     .AddType<AttendeeType>()
     .AddType<SessionType>()

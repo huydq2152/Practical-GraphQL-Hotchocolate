@@ -3,6 +3,7 @@ using GraphQL.Data.Entities;
 using GraphQL.GraphQL.Common;
 using GraphQL.GraphQL.Data.Attendees.CheckIn;
 using GraphQL.GraphQL.Data.Attendees.Register;
+using HotChocolate.Subscriptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace GraphQL.GraphQL.Data.Attendees;
@@ -33,6 +34,7 @@ public class AttendeeMutations
     public async Task<CheckInAttendeePayload> CheckInAttendeeAsync(
         CheckInAttendeeInput input,
         ApplicationDbContext context,
+        [Service] ITopicEventSender eventSender,
         CancellationToken cancellationToken)
     {
         var attendee = await context.Attendees.FirstOrDefaultAsync(
@@ -51,6 +53,11 @@ public class AttendeeMutations
             });
 
         await context.SaveChangesAsync(cancellationToken);
+
+        await eventSender.SendAsync(
+            "OnAttendeeCheckedIn_" + input.SessionId,
+            input.AttendeeId,
+            cancellationToken);
 
         return new CheckInAttendeePayload(attendee, input.SessionId);
     }

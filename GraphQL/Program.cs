@@ -28,6 +28,10 @@ builder.Services
     .AddTypeExtension<SessionMutations>()
     .AddTypeExtension<TrackMutations>()
     .AddTypeExtension<AttendeeMutations>()
+    
+    .AddSubscriptionType(d => d.Name("Subscription"))
+    .AddTypeExtension<SessionSubscriptions>()
+    .AddTypeExtension<AttendeeSubscriptions>()
 
     .AddType<AttendeeType>()
     .AddType<SessionType>()
@@ -36,7 +40,6 @@ builder.Services
     
     .AddGlobalObjectIdentification()
     // .AddQueryFieldToMutationPayloads()
-    
     .AddFiltering()
     .AddSorting()
     .AddInMemorySubscriptions()

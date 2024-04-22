@@ -3,6 +3,7 @@ using GraphQL.Data.Entities;
 using GraphQL.GraphQL.Common;
 using GraphQL.GraphQL.Data.Sessions.Add;
 using GraphQL.GraphQL.Data.Sessions.Schedule;
+using HotChocolate.Subscriptions;
 
 namespace GraphQL.GraphQL.Data.Sessions;
 
@@ -48,7 +49,8 @@ public class SessionMutations
     
     public async Task<ScheduleSessionPayload> ScheduleSessionAsync(
         ScheduleSessionInput input,
-        ApplicationDbContext context)
+        ApplicationDbContext context,
+        [Service]ITopicEventSender eventSender)
     {
         if (input.EndTime < input.StartTime)
         {
@@ -69,6 +71,10 @@ public class SessionMutations
         session.EndTime = input.EndTime;
 
         await context.SaveChangesAsync();
+
+        await eventSender.SendAsync(
+            nameof(SessionSubscriptions.OnSessionScheduledAsync),
+            session.Id);
 
         return new ScheduleSessionPayload(session);
     }

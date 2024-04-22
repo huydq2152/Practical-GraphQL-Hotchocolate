@@ -1,6 +1,7 @@
 ﻿using GraphQL.Data;
 using GraphQL.Data.Entities;
 using GraphQL.GraphQL.DataLoader;
+using GraphQL.GraphQL.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace GraphQL.GraphQL.Types;
@@ -19,6 +20,8 @@ public class TrackType : ObjectType<Track>
             .Field(t => t.Sessions)
             .ResolveWith<TrackResolvers>(t => t.GetSessionsAsync(default!, default!, default!, default))
             .Name("sessions");
+
+        // descriptor.Field(t => t.Name).UseUpperCase(); // use UseUpperCaseAttribute instead
     }
 
     private class TrackResolvers
@@ -29,7 +32,7 @@ public class TrackType : ObjectType<Track>
             SessionByIdDataLoader sessionById,
             CancellationToken cancellationToken)
         {
-            int[] sessionIds = await dbContext.Sessions
+            var sessionIds = await dbContext.Sessions
                 .Where(s => s.Id == track.Id)
                 .Select(s => s.Id)
                 .ToArrayAsync(cancellationToken);

@@ -19,6 +19,7 @@ public class TrackType : ObjectType<Track>
         descriptor
             .Field(t => t.Sessions)
             .ResolveWith<TrackResolvers>(t => t.GetSessionsAsync(default!, default!, default!, default))
+            .UsePaging<NonNullType<SessionType>>()
             .Name("sessions");
 
         // descriptor.Field(t => t.Name).UseUpperCase(); // use UseUpperCaseAttribute instead

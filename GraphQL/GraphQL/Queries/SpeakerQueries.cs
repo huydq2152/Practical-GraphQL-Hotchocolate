@@ -8,6 +8,11 @@ namespace GraphQL.GraphQL.Queries;
 [ExtendObjectType("Query")]
 public class SpeakerQueries
 {
+    [UsePaging]
+    public Task<IQueryable<Speaker>> GetPagedSpeakersAsync(
+        ApplicationDbContext context) =>
+        Task.FromResult<IQueryable<Speaker>>(context.Speakers.OrderBy(t => t.Name));
+    
     public Task<List<Speaker>> GetSpeakersAsync(ApplicationDbContext context) =>
         context.Speakers.ToListAsync();
     public Task<Speaker> GetSpeakerByIdAsync(

@@ -1,6 +1,8 @@
 ﻿using GraphQL.Data;
 using GraphQL.Data.Entities;
 using GraphQL.GraphQL.DataLoader;
+using GraphQL.GraphQL.Model.Sessions;
+using GraphQL.GraphQL.Types;
 using Microsoft.EntityFrameworkCore;
 
 namespace GraphQL.GraphQL.Queries;
@@ -8,6 +10,13 @@ namespace GraphQL.GraphQL.Queries;
 [ExtendObjectType("Query")]
 public class SessionQueries
 {
+    [UsePaging(typeof(NonNullType<SessionType>))]
+    [UseFiltering(typeof(SessionFilterInputType))]
+    [UseSorting]
+    public Task<IQueryable<Session>> GetPagedSessionsAsync(
+        ApplicationDbContext context) =>
+        Task.FromResult<IQueryable<Session>>(context.Sessions);
+
     public async Task<IEnumerable<Session>> GetSessionsAsync(
         ApplicationDbContext context,
         CancellationToken cancellationToken) =>

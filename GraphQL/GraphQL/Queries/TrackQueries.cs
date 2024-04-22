@@ -9,6 +9,11 @@ namespace GraphQL.GraphQL.Queries;
 [ExtendObjectType("Query")]
 public class TrackQueries
 {
+    [UsePaging]
+    public Task<IQueryable<Track>> GetPagedTracksAsync(
+        ApplicationDbContext context) =>
+        Task.FromResult<IQueryable<Track>>(context.Tracks.OrderBy(t => t.Name));
+
     public async Task<IEnumerable<Track>> GetTracksAsync(
         ApplicationDbContext context,
         CancellationToken cancellationToken) =>

@@ -30,8 +30,12 @@ builder.Services
     .AddType<SessionType>()
     .AddType<SpeakerType>()
     .AddType<TrackType>()
+    
     .AddGlobalObjectIdentification()
     // .AddQueryFieldToMutationPayloads()
+    
+    .AddFiltering()
+    .AddSorting()
     
     .AddDataLoader<SpeakerByIdDataLoader>()
     .AddDataLoader<SessionByIdDataLoader>()

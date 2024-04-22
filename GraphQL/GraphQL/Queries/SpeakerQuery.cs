@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GraphQL.GraphQL.Queries;
 
+[ExtendObjectType("Query")]
 public class SpeakerQuery
 {
     public Task<List<Speaker>> GetSpeakers(ApplicationDbContext context) =>

@@ -15,16 +15,24 @@ builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(options =>
 builder.Services
     .AddGraphQLServer()
     .RegisterDbContext<ApplicationDbContext>(DbContextKind.Pooled)
-    .AddQueryType<SpeakerQuery>()
+    
+    .AddQueryType(d=> d.Name("Query"))
+    .AddTypeExtension<SpeakerQuery>()
     
     .AddMutationType(d=> d.Name("Mutation"))
     .AddTypeExtension<SpeakerMutation>()
-    
+
+    .AddType<AttendeeType>()
+    .AddType<SessionType>()
     .AddType<SpeakerType>()
+    .AddType<TrackType>()
     .AddGlobalObjectIdentification()
-    .AddQueryFieldToMutationPayloads()
+    // .AddQueryFieldToMutationPayloads()
+    
     .AddDataLoader<SpeakerByIdDataLoader>()
-    .AddDataLoader<SessionByIdDataLoader>();
+    .AddDataLoader<SessionByIdDataLoader>()
+    .AddDataLoader<AttendeeByIdDataLoader>()
+    .AddDataLoader<TrackByIdDataLoader>();
 
 
 var app = builder.Build();

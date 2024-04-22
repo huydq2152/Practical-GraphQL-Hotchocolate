@@ -1,8 +1,9 @@
 using GraphQL.Data;
+using GraphQL.GraphQL.Data.Attendees;
+using GraphQL.GraphQL.Data.Sessions;
+using GraphQL.GraphQL.Data.Speakers;
+using GraphQL.GraphQL.Data.Tracks;
 using GraphQL.GraphQL.DataLoader;
-using GraphQL.GraphQL.Mutations;
-using GraphQL.GraphQL.Queries;
-using GraphQL.GraphQL.Types;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +39,7 @@ builder.Services
     
     .AddFiltering()
     .AddSorting()
+    .AddInMemorySubscriptions()
     
     .AddDataLoader<SpeakerByIdDataLoader>()
     .AddDataLoader<SessionByIdDataLoader>()
@@ -50,6 +52,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
+app.UseWebSockets();
 
 app.UseRouting();
 app.UseEndpoints(endpoints => { endpoints.MapGraphQL(); });

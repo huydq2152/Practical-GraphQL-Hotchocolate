@@ -1,9 +1,10 @@
 ﻿using GraphQL.Data;
+using GraphQL.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace GraphQL.GraphQL.DataLoader;
 
-public class SpeakerByIdDataLoader: BatchDataLoader<int, Data.Entities.Speaker>
+public class SpeakerByIdDataLoader: BatchDataLoader<int, Speaker>
 {
     private readonly IDbContextFactory<ApplicationDbContext> _dbContextFactory;
 
@@ -16,7 +17,7 @@ public class SpeakerByIdDataLoader: BatchDataLoader<int, Data.Entities.Speaker>
                             throw new ArgumentNullException(nameof(dbContextFactory));
     }
 
-    protected override async Task<IReadOnlyDictionary<int, Data.Entities.Speaker>> LoadBatchAsync(
+    protected override async Task<IReadOnlyDictionary<int, Speaker>> LoadBatchAsync(
         IReadOnlyList<int> keys, 
         CancellationToken cancellationToken)
     {

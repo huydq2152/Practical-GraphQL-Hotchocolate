@@ -3,7 +3,6 @@ using GraphQL.GraphQL.Data.Attendees;
 using GraphQL.GraphQL.Data.Sessions;
 using GraphQL.GraphQL.Data.Speakers;
 using GraphQL.GraphQL.Data.Tracks;
-using GraphQL.GraphQL.Data.Users;
 using GraphQL.GraphQL.DataLoader;
 
 namespace GraphQL.Extensions.ServiceExtensions;
@@ -23,7 +22,6 @@ public static class GraphQlExtensions
             .AddTypeExtension<SessionQueries>()
             .AddTypeExtension<TrackQueries>()
             .AddTypeExtension<AttendeeQueries>()
-            .AddTypeExtension<UserQueries>()
             .AddMutationType(d => d.Name("Mutation"))
             .AddTypeExtension<SpeakerMutations>()
             .AddTypeExtension<SessionMutations>()

@@ -1,6 +1,5 @@
 using System;
 using Client.WebApi.Configurations.Auths;
-using Client.WebApi.DTOs;
 using Client.WebApi.Extensions;
 using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;

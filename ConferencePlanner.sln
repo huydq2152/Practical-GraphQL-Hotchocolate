@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL", "GraphQL\GraphQL.csproj", "{361298C4-3579-40DB-AC7E-6CE95CB5EF4D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{023CCB90-163E-40A9-9C8E-126CD490EAF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL", "src\GraphQL\GraphQL.csproj", "{50672A7E-A60E-407E-8D1F-6ABEB3CF6DA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.WebApi", "src\GraphQL.Client\Client.WebApi.csproj", "{F4AF9534-D5DD-476C-B8D6-784BC207759B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +18,17 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{361298C4-3579-40DB-AC7E-6CE95CB5EF4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{361298C4-3579-40DB-AC7E-6CE95CB5EF4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{361298C4-3579-40DB-AC7E-6CE95CB5EF4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{361298C4-3579-40DB-AC7E-6CE95CB5EF4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50672A7E-A60E-407E-8D1F-6ABEB3CF6DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50672A7E-A60E-407E-8D1F-6ABEB3CF6DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50672A7E-A60E-407E-8D1F-6ABEB3CF6DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50672A7E-A60E-407E-8D1F-6ABEB3CF6DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4AF9534-D5DD-476C-B8D6-784BC207759B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4AF9534-D5DD-476C-B8D6-784BC207759B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4AF9534-D5DD-476C-B8D6-784BC207759B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4AF9534-D5DD-476C-B8D6-784BC207759B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{50672A7E-A60E-407E-8D1F-6ABEB3CF6DA6} = {023CCB90-163E-40A9-9C8E-126CD490EAF0}
+		{F4AF9534-D5DD-476C-B8D6-784BC207759B} = {023CCB90-163E-40A9-9C8E-126CD490EAF0}
 	EndGlobalSection
 EndGlobal

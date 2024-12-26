@@ -9,6 +9,7 @@ public class SpeakerType : ObjectType<Speaker>
 {
     protected override void Configure(IObjectTypeDescriptor<Speaker> descriptor)
     {
+        descriptor.Authorize();
         descriptor
             .ImplementsNode()
             .IdField(t => t.Id)

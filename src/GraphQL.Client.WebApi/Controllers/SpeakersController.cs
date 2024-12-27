@@ -30,14 +30,14 @@ namespace GraphQL.Client.WebApi.Controllers
         {
             try
             {
-                var result = await _client.SendQueryAsync<GetSpeakersResultDto>(Queries.Speakers.GetSpeakers.Value);
+                var result = await _client.SendQueryAsync<object>(Queries.Speakers.GetSpeakers.Value);
 
                 if (result.Errors != null && result.Errors.Any())
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError);
                 }
 
-                return Ok(result.Data.Speakers);
+                return Ok();
             }
             catch (Exception e)
             {

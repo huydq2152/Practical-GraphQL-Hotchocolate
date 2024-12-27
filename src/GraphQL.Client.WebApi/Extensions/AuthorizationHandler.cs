@@ -31,7 +31,7 @@ namespace GraphQL.Client.WebApi.Extensions
             var token = await app.AcquireTokenForClient(_config.Value.Scopes)
                 .ExecuteAsync(cancellationToken);
 
-            request.Headers.Authorization = new AuthenticationHeaderValue("bearer", token.AccessToken);
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
             return await base.SendAsync(request, cancellationToken);
         }
     }

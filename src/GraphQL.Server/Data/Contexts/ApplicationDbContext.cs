@@ -1,7 +1,7 @@
 ﻿using GraphQL.Server.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace GraphQL.Server.Data;
+namespace GraphQL.Server.Data.Contexts;
 
 public class ApplicationDbContext : DbContext
 {

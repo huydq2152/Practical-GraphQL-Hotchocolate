@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using GraphQL.Server.Data;
+using GraphQL.Server.Data.Contexts;
 using HotChocolate.Types.Descriptors;
 
 namespace GraphQL.Server.GraphQL.Extensions;

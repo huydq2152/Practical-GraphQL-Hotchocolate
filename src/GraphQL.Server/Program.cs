@@ -1,4 +1,5 @@
-using GraphQL.Server.Data;
+using GraphQL.Server.Data.Contexts;
+using GraphQL.Server.Data.Contexts.Seeds;
 using GraphQL.Server.Extensions.ServiceExtensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(options =>
 });
 
 builder.Services
+    .AddServices()
     .AddGraphQl()
     .RegisterAuthenticationScheme(builder.Configuration);
 
@@ -17,6 +19,13 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var applicationContextSeed = scope.ServiceProvider.GetRequiredService<ApplicationContextSeed>();
+    await applicationContextSeed.InitialiseAsync();
+    await applicationContextSeed.SeedAsync();
 }
 
 app.UseWebSockets();

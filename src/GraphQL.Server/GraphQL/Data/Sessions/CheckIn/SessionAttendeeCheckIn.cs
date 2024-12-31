@@ -1,5 +1,6 @@
 ﻿using GraphQL.Server.GraphQL.Extensions;
 using GraphQL.Server.Data;
+using GraphQL.Server.Data.Contexts;
 using GraphQL.Server.Data.Entities;
 using GraphQL.Server.GraphQL.DataLoader;
 using Microsoft.EntityFrameworkCore;

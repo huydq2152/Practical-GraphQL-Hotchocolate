@@ -1,4 +1,5 @@
 ﻿using GraphQL.Server.Data;
+using GraphQL.Server.Data.Contexts;
 using GraphQL.Server.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 

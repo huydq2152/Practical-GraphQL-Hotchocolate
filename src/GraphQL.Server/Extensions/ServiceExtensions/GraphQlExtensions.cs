@@ -1,4 +1,5 @@
 using GraphQL.Server.Data;
+using GraphQL.Server.Data.Contexts;
 using GraphQL.Server.GraphQL.Data.Attendees;
 using GraphQL.Server.GraphQL.Data.Sessions;
 using GraphQL.Server.GraphQL.Data.Speakers;

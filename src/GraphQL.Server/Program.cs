@@ -16,7 +16,7 @@ builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(options =>
 });
 
 builder.Services
-    .AddServices()
+    .AddServices(builder.Configuration)
     .AddGraphQl()
     .RegisterAuthenticationScheme(builder.Configuration);
 

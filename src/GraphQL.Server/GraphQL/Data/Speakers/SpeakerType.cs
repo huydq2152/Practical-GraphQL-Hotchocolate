@@ -3,6 +3,7 @@ using GraphQL.Server.Data.Contexts;
 using GraphQL.Server.Data.Entities;
 using GraphQL.Server.GraphQL.Data.Sessions;
 using GraphQL.Server.GraphQL.DataLoader;
+using GraphQL.Server.GraphQL.Middlewares;
 using HotChocolate.Types.Pagination;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +25,7 @@ public class SpeakerType : ObjectType<Speaker>
             .Field(t => t.SessionSpeakers)
             .Description("The sessions that the speaker is presenting.")
             .Name("sessions")
+            .Use<DynamicMaxPageSizeMiddleware>()
             .UsePaging(
                 connectionName: "SpeakerSessions",
                 options: new PagingOptions

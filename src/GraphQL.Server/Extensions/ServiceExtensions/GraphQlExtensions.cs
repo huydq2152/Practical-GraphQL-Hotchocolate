@@ -1,4 +1,3 @@
-using GraphQL.Server.Data;
 using GraphQL.Server.Data.Contexts;
 using GraphQL.Server.GraphQL.Data.Attendees;
 using GraphQL.Server.GraphQL.Data.Sessions;
@@ -14,9 +13,9 @@ public static class GraphQlExtensions
     {
         services
             .AddGraphQLServer()
-            
+
             .AddAuthorization() // Only exposes the identity of the authenticated user to our application through a ClaimsPrincipal
-            
+
             .RegisterDbContext<ApplicationDbContext>(DbContextKind.Pooled)
             .AddQueryType(d => d.Name("Query"))
             .AddTypeExtension<SpeakerQueries>()
@@ -44,7 +43,6 @@ public static class GraphQlExtensions
             .AddDataLoader<SessionByIdDataLoader>()
             .AddDataLoader<AttendeeByIdDataLoader>()
             .AddDataLoader<TrackByIdDataLoader>();
-
         return services;
     }
 }

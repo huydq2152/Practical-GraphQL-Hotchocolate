@@ -1,6 +1,12 @@
+using GraphQL.Gateway.HttpHandlers;
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddHttpClient("Fusion");
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddTransient<ForwardRequestHttpClientHandler>();
+
+builder.Services.AddHttpClient("Fusion")
+    .AddHttpMessageHandler<ForwardRequestHttpClientHandler>();;
 
 builder.Services
     .AddFusionGatewayServer()

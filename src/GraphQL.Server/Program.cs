@@ -40,5 +40,6 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.MapGraphQL();
+app.RunWithGraphQLCommands(args);
 
 app.Run();

@@ -1,0 +1,6 @@
+{
+  "subgraph": "Conference",
+  "http": {
+    "baseAddress": "https://localhost:5001/graphql"
+  }
+}

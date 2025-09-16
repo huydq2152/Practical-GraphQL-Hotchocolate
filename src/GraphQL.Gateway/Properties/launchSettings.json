@@ -4,17 +4,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:37970",
-      "sslPort": 44310
+      "applicationUrl": "http://localhost:28831",
+      "sslPort": 44369
     }
   },
   "profiles": {
-    "GraphQL.Server": {
+    "GraphQL.Gateway": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "https://localhost:5001/graphql",
-      "applicationUrl": "https://localhost:5001",
+      "launchUrl": "https://localhost:5000/graphql",
+      "applicationUrl": "https://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

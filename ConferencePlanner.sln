@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{023CCB90-163E-40A9-9C8E-126CD490EAF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL.Server", "src\GraphQL.Server\GraphQL.Server.csproj", "{50672A7E-A60E-407E-8D1F-6ABEB3CF6DA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL.Server.Conference", "src\GraphQL.Server.Conference\GraphQL.Server.Conference.csproj", "{50672A7E-A60E-407E-8D1F-6ABEB3CF6DA6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL.Client.WebApi", "src\GraphQL.Client.WebApi\GraphQL.Client.WebApi.csproj", "{3069FD23-CB31-43D1-9ED4-1E7E07734689}"
 EndProject
